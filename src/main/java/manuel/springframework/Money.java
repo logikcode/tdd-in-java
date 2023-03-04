@@ -9,7 +9,7 @@ public class Money implements Expression{
     }
     public boolean equals(Object o){
         Money money = (Money) o;
-        return money.amount == this.amount && this.getClass().equals(o.getClass());
+        return money.amount == this.amount && this.currency == money.currency;
     }
     public static Dollar dollar(int amount){
       return   new Dollar(amount, "USD");
@@ -28,6 +28,11 @@ public class Money implements Expression{
 
     @Override
     public Expression plus(Money money) {
-        return new Money( amount + money.amount, currency);
+        return new Sum( this, money);
+    }
+
+    @Override
+    public Money reduce(Bank bank,String currencyType) {
+        return this;
     }
 }
