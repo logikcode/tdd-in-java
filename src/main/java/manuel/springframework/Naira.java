@@ -1,17 +1,10 @@
 package manuel.springframework;
 
-public class Naira {
-    public int amount;
-    public Naira(int amount){
-        this.amount = amount;
+public class Naira extends Money{
+    String currency;
+    public Naira(int amount, String currency){
+        super(amount, currency);
     }
 
-    public Naira times(int multiplier){
-        return new Naira(amount * multiplier);
-    }
 
-    public boolean equals(Object o){
-        Naira naira = (Naira) o;
-        return naira.amount == this.amount;
-    }
 }
