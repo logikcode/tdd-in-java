@@ -1,19 +1,19 @@
 package manuel.springframework;
 
 public class Sum implements Expression {
-    Money from;
-    Money to;
-    public Sum(Money augmend, Money addmend){
+    Expression from;
+    Expression to;
+    public Sum(Expression augmend, Expression addmend){
         this.from = augmend;
         this.to = addmend;
     }
     @Override
     public Money reduce(Bank bank, String toCurrency){
-        int amount = to.amount + from.amount;
+        int amount = to.reduce(bank, toCurrency).amount + from.reduce(bank, toCurrency).amount;
         return new Money(amount, toCurrency);
     }
     @Override
     public Expression plus(Money money) {
-        return null;
+        return new Sum(from, to);
     }
 }
