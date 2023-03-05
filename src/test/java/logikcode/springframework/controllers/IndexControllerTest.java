@@ -28,7 +28,7 @@ class IndexControllerTest {
         assertEquals("something", controller.oupsHandler(),()-> "taking in expression to execute on failure" );
     }
     @Test
-    @DisplayName("Test Exception")
+    @DisplayName("Test Thrown Exception")
     void testThrownException(){
         assertThrows(ValueNotFoundException.class, ()->{
             controller.exThrower();
