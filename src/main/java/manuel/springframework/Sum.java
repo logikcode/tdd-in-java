@@ -10,10 +10,17 @@ public class Sum implements Expression {
     @Override
     public Money reduce(Bank bank, String toCurrency){
         int amount = to.reduce(bank, toCurrency).amount + from.reduce(bank, toCurrency).amount;
+        System.out.println("AMOUNT IN SUM REDUCE "+ from.reduce(bank, toCurrency).amount);
         return new Money(amount, toCurrency);
     }
+
     @Override
-    public Expression plus(Money money) {
-        return new Sum(from, to);
+    public Expression times(int multiplier) {
+        return new Sum(from.times(multiplier), to.times(multiplier));
+    }
+
+    @Override
+    public Expression plus(Expression  money) {
+        return new Sum(this, to);
     }
 }

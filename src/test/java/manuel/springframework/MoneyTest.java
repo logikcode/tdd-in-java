@@ -81,4 +81,24 @@ public class MoneyTest {
       Money result = bank.reduce(tenUSD.plus(hundredNaira), "USD");
       assertEquals(new Money(60, "USD"), result);
     }
+
+    @Test
+    void testSumPlusMoney(){
+        Expression fiveDollars = Money.dollar(10);
+        Expression fiftyNaira = Money.naira(40);
+        Bank bank = new Bank();
+        bank.addRate("NGN", "USD", 2);
+        Expression sum = new Sum(fiveDollars, fiftyNaira.plus(fiveDollars)); // sum{ {10}  sum{ {10}, {40}} }
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(40), result);
+    }
+
+    @Test
+    void testSumTimes(){
+        Expression tenNaira = Money.naira(10);
+        Expression twentyDollar = Money.dollar(20);
+        Bank bank = new Bank();
+        bank.addRate("USD", "NGN", 2);
+        Expression sum = new Sum(tenNaira, twentyDollar.times(2));
+    }
 }
