@@ -3,11 +3,13 @@ package logikcode.springframework.controllers;
 import logikcode.springframework.petty.controllers.IndexController;
 import logikcode.springframework.petty.controllers.ValueNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class IndexControllerTest {
     IndexController controller;
@@ -32,6 +34,24 @@ class IndexControllerTest {
     void testThrownException(){
         assertThrows(ValueNotFoundException.class, ()->{
             controller.exThrower();
+        });
+    }
+
+    @Test
+    @Disabled(value = "Demo timeout")
+    void testTimeout(){
+        assertTimeout(Duration.ofMillis(300), ()->{
+            Thread.sleep(5000);
+            System.out.println("I got here");
+        });
+    }
+
+    @Test
+    @Disabled(value = "Demo timeout")
+    void testTimeoutPreempt(){
+        assertTimeoutPreemptively(Duration.ofMillis(300), ()->{
+            Thread.sleep(5000);
+            System.out.println("I got here inside the preempt");
         });
     }
 }
