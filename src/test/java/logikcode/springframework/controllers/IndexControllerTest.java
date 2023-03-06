@@ -54,4 +54,8 @@ class IndexControllerTest {
             System.out.println("I got here inside the preempt");
         });
     }
+
+    @Test
+    void testAssumption(){
+    }
 }
