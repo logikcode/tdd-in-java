@@ -46,8 +46,8 @@ class OwnerMapServiceTest {
 
             System.out.println("Nested: 2nd Before Each");
         }
-        @Test
         @DisplayName("Verify Zero Pet Owners")
+        @Test
         void testPetCount(){
             int count = petTypeService.findAll().size();
             assertEquals(3, count);
@@ -71,6 +71,7 @@ class OwnerMapServiceTest {
             Owner owner = new Owner(2L, "Deril", "Zacks");
             Owner persistedOwner = ownerMapService.save(owner);
             assertNotNull(persistedOwner);
+
             }
 
             @Test
@@ -82,31 +83,5 @@ class OwnerMapServiceTest {
         }
 
     }
-    @Test
-    void findAll() {
-    }
 
-    @Test
-    void findById() {
-    }
-
-    @Test
-    void save() {
-    }
-
-    @Test
-    void delete() {
-    }
-
-    @Test
-    void deleteById() {
-    }
-
-    @Test
-    void findByLastName() {
-    }
-
-    @Test
-    void findAllByLastNameLike() {
-    }
 }
