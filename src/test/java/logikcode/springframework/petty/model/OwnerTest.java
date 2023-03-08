@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -48,4 +49,12 @@ class OwnerTest {
     void testingEnumValue(OwnerType ownerType){
         System.out.println(ownerType);
     }
+    @DisplayName("Demonstrating Parameterized method")
+    @ParameterizedTest(name = "{displayName} - [{index}] {arguments}")
+    @CsvSource({"Spring, 6.0, v6", "Framework, 3.1, v3", "Test, Driven, Development"})
+    void testingCsvInput(String stateName, String val1, String val2){
+        System.out.println(stateName +" "+ val1 + " "+ val2);
+
+    }
+
 }
