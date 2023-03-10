@@ -32,14 +32,15 @@ public class SpecialitySDJpaService implements SpecialtyService {
     public Speciality save(Speciality object) {
         return specialtyRepository.save(object);
     }
-
     @Override
     public void delete(Speciality object) {
+
         specialtyRepository.delete(object);
     }
 
     @Override
-    public void deleteById(Long aLong) {
-        specialtyRepository.deleteById(aLong);
+    public void deleteById(Long id) {
+
+        specialtyRepository.deleteById(id);
     }
 }
