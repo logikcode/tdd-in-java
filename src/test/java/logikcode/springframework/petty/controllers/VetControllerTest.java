@@ -4,10 +4,10 @@ import logikcode.springframework.petty.exceptions.DataAccessException;
 import logikcode.springframework.petty.fauxspring.Model;
 import logikcode.springframework.petty.model.Speciality;
 import logikcode.springframework.petty.model.Vet;
-import logikcode.springframework.petty.services.ClinicService;
 import logikcode.springframework.petty.services.SpecialtyService;
 import logikcode.springframework.petty.services.map.SpecialityMapService;
 import logikcode.springframework.petty.services.map.VetMapService;
+import logikcode.springframework.petty.services.service.ClinicService;
 import logikcode.springframework.vetspring.ModelMapImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,17 +17,15 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-//
-//import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.lenient;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -67,7 +65,7 @@ class VetControllerTest {
     @BeforeEach
     void init() throws DataAccessException {
         listOfVets.add(new Vet(1L, "Emmanuel", "Mikel", null));
-        given(clinicService.findVets()).willReturn(listOfVets);
+       lenient().when(clinicService.findVets()).thenReturn(listOfVets);
         mockMvc = MockMvcBuilders.standaloneSetup(vetController).build();
     }
 

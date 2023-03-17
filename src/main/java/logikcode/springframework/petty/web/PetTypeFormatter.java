@@ -16,15 +16,15 @@
 package logikcode.springframework.petty.web;
 
 
+import logikcode.springframework.petty.exceptions.DataAccessException;
+import logikcode.springframework.petty.model.PetType;
+import logikcode.springframework.petty.services.service.ClinicService;
+import org.springframework.format.Formatter;
+import org.springframework.stereotype.Component;
+
 import java.text.ParseException;
 import java.util.Collection;
 import java.util.Locale;
-
-import logikcode.springframework.petty.exceptions.DataAccessException;
-import logikcode.springframework.petty.model.PetType;
-import logikcode.springframework.petty.services.ClinicService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.Formatter;
 
 /**
  * Instructs Spring MVC on how to parse and print elements of type 'PetType'. Starting from Spring 3.0, Formatters have
@@ -34,11 +34,11 @@ import org.springframework.format.Formatter;
  * <p/>
  * Also see how the bean 'conversionService' has been declared inside /WEB-INF/mvc-core-config.xml
  *
- * @author Mark Fisher
- * @author Juergen Hoeller
- * @author Michael Isvy
+ *
  */
+    @Component
 public class PetTypeFormatter implements Formatter<PetType> {
+
 
     private final ClinicService clinicService;
 

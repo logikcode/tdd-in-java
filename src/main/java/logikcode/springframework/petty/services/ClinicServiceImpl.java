@@ -21,12 +21,14 @@ import logikcode.springframework.petty.repositories.OwnerRepository;
 import logikcode.springframework.petty.repositories.PetRepository;
 import logikcode.springframework.petty.repositories.VetRepository;
 import logikcode.springframework.petty.repositories.VisitRepository;
+import logikcode.springframework.petty.services.service.ClinicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -66,8 +68,11 @@ public class ClinicServiceImpl implements ClinicService {
 
     @Override
     @Transactional()
-    public Owner findOwnerByLastName(String lastName) throws DataAccessException {
-        return  ownerRepository.findByLastName(lastName);
+    public Collection<Owner> findOwnerByLastName(String lastName) throws DataAccessException {
+        Collection<Owner> owners = new ArrayList<>();
+        Owner owner = ownerRepository.findByLastName(lastName);
+        owners.add(owner);
+        return owners;
     }
 
     @Override
@@ -75,6 +80,7 @@ public class ClinicServiceImpl implements ClinicService {
     public void saveOwner(Owner owner) throws DataAccessException {
         ownerRepository.save(owner);
     }
+
 
 
     @Override

@@ -19,7 +19,7 @@ import logikcode.springframework.petty.exceptions.DataAccessException;
 import logikcode.springframework.petty.model.Owner;
 import logikcode.springframework.petty.model.Pet;
 import logikcode.springframework.petty.model.PetType;
-import logikcode.springframework.petty.services.ClinicService;
+import logikcode.springframework.petty.services.service.ClinicService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -34,9 +34,7 @@ import javax.validation.Valid;
 import java.util.Collection;
 
 /**
- * @author Juergen Hoeller
- * @author Ken Krebs
- * @author Arjen Poutsma
+ *
  */
 @Controller
 @RequestMapping("/owners/{ownerId}")

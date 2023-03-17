@@ -15,14 +15,10 @@
  */
 package logikcode.springframework.petty.web;
 
-import java.util.Collection;
-import java.util.Map;
-
-import javax.validation.Valid;
-
 import logikcode.springframework.petty.exceptions.DataAccessException;
+
 import logikcode.springframework.petty.model.Owner;
-import logikcode.springframework.petty.services.ClinicService;
+import logikcode.springframework.petty.services.service.ClinicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +29,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.util.Collection;
+import java.util.Map;
 
 /**
  * @author Juergen Hoeller
@@ -51,7 +51,6 @@ public class OwnerController {
     public OwnerController(ClinicService clinicService) {
         this.clinicService = clinicService;
     }
-
     @InitBinder
     public void setAllowedFields(WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
@@ -91,7 +90,7 @@ public class OwnerController {
         }
 
         // find owners by last name
-        Owner results = this.clinicService.findOwnerByLastName(owner.getLastName());
+        Collection<Owner> results = this.clinicService.findOwnerByLastName(owner.getLastName());
         if ( results==null ) {
             // no owners found
             result.rejectValue("lastName", "notFound", "not found");

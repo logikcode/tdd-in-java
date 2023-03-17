@@ -22,7 +22,7 @@ import javax.validation.Valid;
 import logikcode.springframework.petty.exceptions.DataAccessException;
 import logikcode.springframework.petty.model.Pet;
 import logikcode.springframework.petty.model.Visit;
-import logikcode.springframework.petty.services.ClinicService;
+import logikcode.springframework.petty.services.service.ClinicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;

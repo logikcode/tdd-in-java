@@ -19,7 +19,7 @@ import java.util.Map;
 
 import logikcode.springframework.petty.exceptions.DataAccessException;
 import logikcode.springframework.petty.model.Vets;
-import logikcode.springframework.petty.services.ClinicService;
+import logikcode.springframework.petty.services.service.ClinicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

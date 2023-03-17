@@ -7,7 +7,7 @@ public class Person extends BaseEntity {
         this.firstName = firstName;
         this.lastName = lastName;
     }
-
+    public Person(){}
     private String firstName;
     private String lastName;
 
